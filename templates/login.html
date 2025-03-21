@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <style>
+        .login-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .login-header {
+            background: var(--primary-color);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .login-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .login-form {
+            padding: 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control {
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(118, 184, 82, 0.25);
+        }
+        
+        .btn-login {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            width: 100%;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .signup-link a {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .signup-link a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/predict-info">Predict</a>
+    </div>
+    
+    <div class="login-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="login-card">
+                        <div class="login-header">
+                            <h1 class="login-title">Login</h1>
+                        </div>
+                        <div class="login-form">
+                            <form action="{{ url_for('login_details') }}" method="post">
+                                <div class="form-group">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                                </div>
+                                <button type="submit" class="btn btn-login">Sign In</button>
+                                <div class="signup-link">
+                                    <p>Don't have an account? <a href="/signup">Create one now</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

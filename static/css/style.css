@@ -1,0 +1,205 @@
+/* Global Styles */
+:root {
+    --primary-color: #76b852;
+    --secondary-color: #28a745;
+    --dark-color: #333;
+    --light-color: #fff;
+    --shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+body {
+    background: var(--primary-color);
+    background: linear-gradient(to top, #76b852, #8DC26F);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Navigation */
+.topnav {
+    background-color: var(--dark-color);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.topnav a {
+    float: left;
+    color: var(--light-color);
+    text-align: center;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.topnav a:hover {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+.topnav a.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Container Spacing */
+.container {
+    padding-top: 80px;
+    padding-bottom: 2rem;
+}
+
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Forms */
+.form-control {
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: none;
+}
+
+/* Tables */
+.table {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.table th {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-weight: 500;
+}
+
+/* Responsive Text */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* Custom Classes */
+.text-white {
+    color: var(--light-color) !important;
+}
+
+.bg-transparent {
+    background: transparent !important;
+}
+
+/* Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding-top: 60px;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    
+    .btn {
+        padding: 0.6rem 1.5rem;
+    }
+    
+    .topnav a {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .card {
+        background: rgba(255, 255, 255, 0.98);
+    }
+} 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashew Analysis - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: #2d3436;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-auth {
+            display: flex;
+        }
+        
+        .logout-btn {
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    {% if session.get('logged_in') %}
+    <div class="topnav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/predict-info">Predict</a>
+        </div>
+        <div class="nav-auth">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title mb-4">Cashew Diseases & Symptoms</h1>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-info">
+                                    <h4 class="alert-heading">Important Information</h4>
+                                    <p>This guide helps you identify common cashew diseases and their symptoms for better crop management.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Anthracnose</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Dark brown lesions</li>
+                                            <li>✓ Leaf and flower damage</li>
+                                            <li>✓ Fruit rot</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Apply copper-based fungicides and prune affected parts.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Dieback Disease</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Wilting of shoots</li>
+                                            <li>✓ Branch death</li>
+                                            <li>✓ Gum exudation</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Remove affected branches and apply fungicides.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Powdery Mildew</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ White powdery coating</li>
+                                            <li>✓ Leaf curling</li>
+                                            <li>✓ Flower drop</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Apply sulfur-based fungicides and ensure good air circulation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Root Rot</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Yellowing of leaves</li>
+                                            <li>✓ Root decay</li>
+                                            <li>✓ Tree decline</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Improve drainage and apply appropriate fungicides.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light mt-4">
+                            <div class="card-body">
+                                <h2>Prevention Tips</h2>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Regular pruning</li>
+                                            <li>Proper spacing</li>
+                                            <li>Good drainage</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Clean cultivation</li>
+                                            <li>Balanced fertilization</li>
+                                            <li>Disease monitoring</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardamum Analysis - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: #2d3436;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-auth {
+            display: flex;
+        }
+        
+        .logout-btn {
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    {% if session.get('logged_in') %}
+    <div class="topnav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/predict-info">Predict</a>
+        </div>
+        <div class="nav-auth">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title mb-4">Cardamum Diseases & Symptoms</h1>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-info">
+                                    <h4 class="alert-heading">Important Information</h4>
+                                    <p>This guide helps you identify common cardamum diseases and their symptoms for better crop management.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Capsule Rot</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Water-soaked lesions on capsules</li>
+                                            <li>✓ Dark brown to black spots</li>
+                                            <li>✓ Premature capsule drop</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Apply copper oxychloride and improve drainage.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Leaf Blight</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Oval to elongated spots on leaves</li>
+                                            <li>✓ Yellowing of leaf margins</li>
+                                            <li>✓ Leaf wilting</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Remove infected leaves and spray fungicides.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Rhizome Rot</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Yellowing of leaves</li>
+                                            <li>✓ Root decay</li>
+                                            <li>✓ Plant collapse</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Remove affected plants and treat soil with fungicides.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Mosaic Disease</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Mottled appearance on leaves</li>
+                                            <li>✓ Stunted growth</li>
+                                            <li>✓ Reduced yield</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Remove infected plants and control insect vectors.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light mt-4">
+                            <div class="card-body">
+                                <h2>Prevention Tips</h2>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Proper shade management</li>
+                                            <li>Regular monitoring</li>
+                                            <li>Good drainage system</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Clean cultivation</li>
+                                            <li>Disease-free planting material</li>
+                                            <li>Balanced fertilization</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

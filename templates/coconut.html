@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coconut Analysis - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: #2d3436;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-auth {
+            display: flex;
+        }
+        
+        .logout-btn {
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/predict-info">Predict</a>
+        </div>
+        <div class="nav-auth">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title mb-4">Coconut Diseases & Symptoms</h1>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-info">
+                                    <h4 class="alert-heading">Important Information</h4>
+                                    <p>This guide helps you identify common coconut diseases and their symptoms for better crop management.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Bud Rot</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Yellowing of young leaves</li>
+                                            <li>✓ Rotting of spear leaf</li>
+                                            <li>✓ Crown wilting</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Remove affected parts and apply Bordeaux mixture to the crown.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Stem Bleeding</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Dark brown liquid oozing from trunk</li>
+                                            <li>✓ Reduced leaf size</li>
+                                            <li>✓ Yellowing of fronds</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Clean affected areas and apply fungicide paste.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Root Wilt</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Yellowing of older leaves</li>
+                                            <li>✓ Flaccidity of leaflets</li>
+                                            <li>✓ Reduced nut size</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Improve drainage and apply recommended fertilizers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Leaf Rot</h3>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Rotting of mature leaves</li>
+                                            <li>✓ Brown lesions on leaflets</li>
+                                            <li>✓ Premature nut fall</li>
+                                        </ul>
+                                        <h4 class="mt-3">Treatment</h4>
+                                        <p>Remove affected leaves and spray with fungicides.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light mt-4">
+                            <div class="card-body">
+                                <h2>Prevention Tips</h2>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Regular monitoring of trees</li>
+                                            <li>Proper drainage system</li>
+                                            <li>Regular cleaning of crown</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Balanced fertilization</li>
+                                            <li>Proper spacing between trees</li>
+                                            <li>Regular pest control measures</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

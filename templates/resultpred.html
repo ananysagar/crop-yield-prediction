@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prediction Result - Agriculture Crop Prediction</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style>
+		.topnav {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 1rem;
+			background-color: #2d3436;
+		}
+		
+		.nav-links {
+			display: flex;
+		}
+		
+		.nav-auth {
+			display: flex;
+		}
+		
+		.logout-btn {
+			color: #fff;
+			background-color: #e74c3c;
+			padding: 0.8rem 1.5rem;
+			border-radius: 5px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			margin: 0.5rem 0;
+		}
+		
+		.logout-btn:hover {
+			background-color: #c0392b;
+			color: #fff;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	{% if session.get('logged_in') %}
+	<div class="topnav">
+		<div class="nav-links">
+			<a href="/">Home</a>
+			<a href="/about">About</a>
+			<a href="/services">Services</a>
+			<a href="/predict-info">Predict</a>
+		</div>
+		<div class="nav-auth">
+			<a href="/logout" class="logout-btn">Logout</a>
+		</div>
+	</div>
+	{% endif %}
+	
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<h1 class="card-title mb-4">Prediction Results</h1>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<div class="alert alert-success">
+									<h4 class="alert-heading">Analysis Complete!</h4>
+									<p>Based on your input parameters, here are the most suitable crops for your land.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="row mt-4">
+							<div class="col-md-12">
+								<div class="card mb-4">
+									<div class="card-body">
+										<h3>Recommended Crops</h3>
+										<div class="table-responsive">
+											<table class="table table-hover">
+												<thead class="thead-light">
+													<tr>
+														<th>Crop Name</th>
+														<th>Market Price</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><h5>{{ prediction }}</h5></td>
+														<td><h5>₹ {{ price }}</h5></td>
+														<td>
+															<a href="/{{ prediction.lower() }}" class="btn btn-primary">View Details</a>
+														</td>
+													</tr>
+													{% if prediction1 and prediction1 != prediction %}
+													<tr>
+														<td><h5>{{ prediction1 }}</h5></td>
+														<td><h5>₹ {{ price1 }}</h5></td>
+														<td>
+															<a href="/{{ prediction1.lower() }}" class="btn btn-primary">View Details</a>
+														</td>
+													</tr>
+													{% endif %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-body">
+										<h3>Your Input Parameters</h3>
+										<div class="row mt-3">
+											<div class="col-md-4">
+												<div class="card bg-light">
+													<div class="card-body">
+														<h5 class="card-title">Location</h5>
+														<p class="card-text">{{ comment }}</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="card bg-light">
+													<div class="card-body">
+														<h5 class="card-title">Soil Type</h5>
+														<p class="card-text">{{ comment1 }}</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="card bg-light">
+													<div class="card-body">
+														<h5 class="card-title">Area</h5>
+														<p class="card-text">{{ comment2 }} acres</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card bg-light mt-4">
+							<div class="card-body">
+								<h3>Next Steps</h3>
+								<div class="row">
+									<div class="col-md-6">
+										<ul>
+											<li>Click on "View Details" to learn more about each recommended crop</li>
+											<li>Review the disease management practices for your chosen crop</li>
+											<li>Consider the current market prices before making a decision</li>
+										</ul>
+									</div>
+									<div class="col-md-6">
+										<ul>
+											<li>Consult with local agricultural experts</li>
+											<li>Check the seasonal calendar for planting times</li>
+											<li>Plan your resources and requirements</li>
+										</ul>
+									</div>
+								</div>
+								<div class="text-center mt-4">
+									<a href="/predict-info" class="btn btn-primary btn-lg">Make Another Prediction</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

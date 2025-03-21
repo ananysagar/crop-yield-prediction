@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .prediction-section {
+            min-height: calc(100vh - 60px);
+            padding: 4rem 0;
+            background: linear-gradient(rgba(118, 184, 82, 0.1), rgba(118, 184, 82, 0.2));
+        }
+        
+        .welcome-card {
+            background: linear-gradient(135deg, #76b852, #8DC26F);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .welcome-card .card-body {
+            padding: 2.5rem;
+        }
+        
+        .welcome-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .form-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .form-control {
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            border: 2px solid #76b852;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            color: #2d3436 !important;
+            background-color: #fff;
+            font-weight: 500;
+        }
+        
+        .form-control::placeholder {
+            color: #95a5a6;
+            opacity: 1;
+        }
+        
+        .form-control:focus {
+            border-color: #2ecc71;
+            box-shadow: 0 0 0 0.2rem rgba(46, 204, 113, 0.25);
+            color: #2d3436;
+        }
+        
+        select.form-control:not([size]):not([multiple]) {
+            height: auto !important;
+            padding: 1rem 1.2rem;
+        }
+        
+        select.form-control {
+            height: auto !important;
+            padding: 1rem 1.2rem;
+            color: #2d3436 !important;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d3436' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        
+        select.form-control option {
+            color: #2d3436;
+            padding: 1rem;
+            font-weight: 500;
+            background-color: #fff;
+        }
+        
+        select.form-control option:checked {
+            background-color: #76b852;
+            color: #fff;
+        }
+        
+        .btn-predict {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            width: auto;
+            min-width: 200px;
+        }
+        
+        .btn-predict:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+            background: linear-gradient(135deg, #27ae60, #219a52);
+        }
+        
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: #2d3436;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-auth {
+            display: flex;
+        }
+        
+        .logout-btn {
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .how-it-works {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .how-it-works .card-body {
+            padding: 2rem;
+        }
+        
+        .how-it-works h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .how-it-works ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .how-it-works li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #555;
+        }
+        
+        .how-it-works li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #76b852;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .prediction-section {
+                padding: 2rem 0;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .form-card {
+                padding: 1.5rem;
+            }
+            
+            .form-control {
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+            
+            .btn-predict {
+                width: 100%;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% if session.get('logged_in') %}
+    <div class="topnav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/predict-info" class="active">Predict</a>
+        </div>
+        <div class="nav-auth">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="prediction-section">
+        <div class="container">
+            <div class="welcome-card">
+                <div class="card-body text-center">
+                    <h1 class="welcome-title">Welcome to Crop Prediction</h1>
+                    <p class="lead mb-0">Enter your land details below to get crop recommendations suitable for your area.</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="form-card">
+                        <form action="/predict" method="POST">
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <select class="form-control" id="location" name="comment" required>
+                                    <option value="" disabled selected hidden>Select your location</option>
+                                    <option value="Mangalore">Mangalore</option>
+                                    <option value="Kodagu">Kodagu</option>
+                                    <option value="kasaragodu">Kasaragodu</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="soil">Soil Type</label>
+                                <select class="form-control" id="soil" name="comment1" required>
+                                    <option value="" disabled selected hidden>Select soil type</option>
+                                    <option value="Coastal alluvials">Coastal alluvials</option>
+                                    <option value="Laterite soil">Laterite soil</option>
+                                    <option value="Dark brown alayey soil">Dark brown alayey soil</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="area">Area (in acres)</label>
+                                <input type="number" class="form-control" id="area" name="comment2" placeholder="Enter area in acres" min="0" step="0.01" required>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-predict">Get Prediction</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="how-it-works">
+                        <div class="card-body">
+                            <h2 class="text-center">How it Works</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Enter your location details</li>
+                                        <li>Select your soil type</li>
+                                        <li>Specify the land area</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Get crop recommendations</li>
+                                        <li>View detailed crop information</li>
+                                        <li>Make informed decisions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

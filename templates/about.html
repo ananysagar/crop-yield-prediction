@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: #2d3436;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-auth {
+            display: flex;
+        }
+        
+        .logout-btn {
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    {% if session.get('logged_in') %}
+    <div class="topnav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about" class="active">About</a>
+            <a href="/services">Services</a>
+            <a href="/predict-info">Predict</a>
+        </div>
+        <div class="nav-auth">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title mb-4">About Agriculture Crop Prediction</h1>
+                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2>Our Mission</h2>
+                                <p class="lead">
+                                    We aim to help farmers make better decisions through data-driven predictions and insights.
+                                </p>
+                                
+                                <h2 class="mt-4">What We Do</h2>
+                                <p>
+                                    Our platform uses advanced algorithms to predict crop yields and provide personalized recommendations 
+                                    based on various factors including:
+                                </p>
+                                <ul>
+                                    <li>Soil conditions</li>
+                                    <li>Weather patterns</li>
+                                    <li>Historical data</li>
+                                    <li>Local agricultural practices</li>
+                                </ul>
+                                
+                                <h2 class="mt-4">Why Choose Us</h2>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h4>Accurate Predictions</h4>
+                                                <p>Using advanced machine learning algorithms for precise results</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h4>Easy to Use</h4>
+                                                <p>Simple interface designed for farmers</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

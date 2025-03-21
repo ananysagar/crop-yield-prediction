@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/predict-info">Predict</a>
+    </div>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white mb-4">Welcome to Your Dashboard</h1>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Quick Actions</h2>
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <h3>Predict Crops</h3>
+                                        <p>Get predictions for your crop yield</p>
+                                        <a href="/predict-info" class="btn btn-info">Start Prediction</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <h3>View Services</h3>
+                                        <p>Check our available services</p>
+                                        <a href="/services" class="btn btn-info">View Services</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <h3>Learn More</h3>
+                                        <p>Learn about our platform</p>
+                                        <a href="/about" class="btn btn-info">About Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Agriculture Crop Prediction</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: #2d3436;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-auth {
+            display: flex;
+        }
+        
+        .logout-btn {
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    {% if session.get('logged_in') %}
+    <div class="topnav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/services" class="active">Services</a>
+            <a href="/predict-info">Predict</a>
+        </div>
+        <div class="nav-auth">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title mb-4">Our Services</h1>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <h3>Crop Prediction</h3>
+                                        <p>Get accurate predictions for your crop yield based on various environmental factors.</p>
+                                        <a href="/predict-info" class="btn btn-info">Start Prediction</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <h3>Crop Analysis</h3>
+                                        <p>Detailed analysis of different crops suitable for your region.</p>
+                                        <ul class="list-unstyled text-left">
+                                            <li><a href="/coconut">Coconut Analysis</a></li>
+                                            <li><a href="/arecanut">Arecanut Analysis</a></li>
+                                            <li><a href="/cocoa">Cocoa Analysis</a></li>
+                                            <li><a href="/paddy">Paddy Analysis</a></li>
+                                            <li><a href="/coffee">Coffee Analysis</a></li>
+                                            <li><a href="/cardamum">Cardamum Analysis</a></li>
+                                            <li><a href="/ginger">Ginger Analysis</a></li>
+                                            <li><a href="/tea">Tea Analysis</a></li>
+                                            <li><a href="/groundnut">Groundnut Analysis</a></li>
+                                            <li><a href="/blackgram">Blackgram Analysis</a></li>
+                                            <li><a href="/cashew">Cashew Analysis</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <h3>Recommendations</h3>
+                                        <p>Get personalized recommendations for:</p>
+                                        <ul class="list-unstyled text-left">
+                                            <li>✓ Soil Management</li>
+                                            <li>✓ Water Usage</li>
+                                            <li>✓ Pest Control</li>
+                                            <li>✓ Harvest Timing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h2>How It Works</h2>
+                                        <div class="row mt-3">
+                                            <div class="col-md-3">
+                                                <div class="text-center">
+                                                    <h4>1. Input Data</h4>
+                                                    <p>Enter your field details and conditions</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="text-center">
+                                                    <h4>2. Analysis</h4>
+                                                    <p>Our system analyzes the data</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="text-center">
+                                                    <h4>3. Prediction</h4>
+                                                    <p>Get crop predictions</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="text-center">
+                                                    <h4>4. Recommendations</h4>
+                                                    <p>Receive detailed recommendations</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
