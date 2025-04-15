@@ -12,7 +12,7 @@ const CropPrediction = () => {
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [cropDetails, setCropDetails] = useState(null);
+  const [cropDetails, setCropDetails] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +26,7 @@ const CropPrediction = () => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    //setCropDetails(null);
+    setCropDetails(null);
 
     try {
       const response = await api.predictCrop(formData);
@@ -34,16 +34,39 @@ const CropPrediction = () => {
         setError(response.error);
       } else {
         setPrediction(response);
-        // After getting prediction, fetch crop details
-        // if (response.prediction) {
-        //     try {
-        //         const cropInfo = await fetch(`/templates/${response.prediction.toLowerCase()}.html`);
-        //         const cropText = await cropInfo.text();
-        //         setCropDetails(cropText);
-        //     } catch (err) {
-        //         console.log('Could not load crop details');
-        //     }
-        // }
+        // After getting prediction, fetch details for both crops
+        const fetchCropInfo = async (cropName) => {
+          try {
+            const cropInfo = await fetch(
+              `http://localhost:5000/api/crop-info/${cropName.toLowerCase()}`,
+              {
+                credentials: 'include'
+              }
+            );
+            const cropData = await cropInfo.json();
+            if (!cropData.error) {
+              return cropData.content;
+            }
+            return null;
+          } catch (err) {
+            console.log(`Could not load details for ${cropName}:`, err);
+            return null;
+          }
+        };
+
+        // Fetch both crop details
+        const fetchBothCrops = async () => {
+          const mainCropInfo = await fetchCropInfo(response.prediction);
+          const altCropInfo = response.prediction1 !== "N/A" ? 
+            await fetchCropInfo(response.prediction1) : null;
+          
+          setCropDetails({
+            main: mainCropInfo,
+            alternative: altCropInfo
+          });
+        };
+
+        fetchBothCrops();
       }
     } catch (err) {
       setError("Failed to get prediction. Please try again.");
@@ -125,7 +148,7 @@ const CropPrediction = () => {
               <span className="label">Alternative Crop:</span>
               <span className="value">{prediction.prediction1}</span>
             </div>
-            {prediction.price1 && (
+            {prediction.price1 && prediction.prediction1 !== "N/A" && (
               <div className="result-item">
                 <span className="label">Alternative Estimated Price:</span>
                 <span className="value">₹{prediction.price1}</span>
@@ -134,12 +157,29 @@ const CropPrediction = () => {
           </div>
         )}
 
-        {/* {cropDetails && (
-                    <div className="crop-details">
-                        <h3>Crop Information</h3>
-                        <div dangerouslySetInnerHTML={{ __html: cropDetails }} />
-                    </div>
-                )} */}
+        {cropDetails && (
+          <>
+            {cropDetails.main && (
+              <div className="crop-details">
+                <h3>Primary Crop Information - {prediction.prediction}</h3>
+                <div 
+                  className="crop-content"
+                  dangerouslySetInnerHTML={{ __html: cropDetails.main }} 
+                />
+              </div>
+            )}
+            
+            {cropDetails.alternative && prediction.prediction1 !== "N/A" && (
+              <div className="crop-details">
+                <h3>Alternative Crop Information - {prediction.prediction1}</h3>
+                <div 
+                  className="crop-content"
+                  dangerouslySetInnerHTML={{ __html: cropDetails.alternative }} 
+                />
+              </div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

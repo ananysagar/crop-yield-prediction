@@ -133,10 +133,35 @@
     font-size: 1.5rem;
 }
 
-.crop-details p {
+.crop-details .crop-content {
     color: #34495e;
     line-height: 1.6;
+}
+
+.crop-details .crop-content p {
     margin-bottom: 1rem;
+}
+
+.crop-details .crop-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.crop-details .crop-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Remove any error styling that might appear in the crop content */
+.crop-details .crop-content .error,
+.crop-details .crop-content .error-message {
+    display: none;
+}
+
+/* Add separation between primary and alternative crop details */
+.crop-details + .crop-details {
+    margin-top: 2rem;
+    border-top: 2px solid #f8f9fa;
+    padding-top: 2rem;
 }
 
 .suggestions {

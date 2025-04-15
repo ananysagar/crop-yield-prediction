@@ -14,8 +14,9 @@ import pandas as pd
 import sqlite3 as sql
 from datetime import timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask, request, session, jsonify
+from flask import Flask, request, session, jsonify, send_from_directory
 from flask_cors import CORS
+from bs4 import BeautifulSoup  # Add this import at the top
 
 app = Flask(__name__)
 # Explicitly allow requests from the frontend origin
@@ -322,6 +323,40 @@ def get_user():
         'username': session.get('username'),
         'logged_in': session.get('logged_in', False)
     }), 200
+
+@app.route('/api/crop-info/<crop_name>')
+def get_crop_info(crop_name):
+    """
+    Serve crop information HTML files from the templates directory.
+    """
+    try:
+        with open(f'templates/{crop_name.lower()}.html', 'r', encoding='utf-8') as file:
+            # Parse the HTML content
+            soup = BeautifulSoup(file.read(), 'html.parser')
+            
+            # Find the main content container
+            content = soup.find('div', class_='container')
+            
+            if content:
+                # Remove any navigation elements
+                for nav in content.find_all(['nav', 'div'], class_=['topnav', 'nav-links', 'nav-auth']):
+                    nav.decompose()
+                
+                # Extract just the card content
+                card_body = content.find('div', class_='card-body')
+                if card_body:
+                    # Remove the original title as we'll use our own
+                    if card_body.find('h1'):
+                        card_body.find('h1').decompose()
+                    
+                    return jsonify({'content': str(card_body)}), 200
+            
+            return jsonify({'error': 'Could not extract crop information'}), 500
+            
+    except FileNotFoundError:
+        return jsonify({'error': f'No information available for crop: {crop_name}'}), 404
+    except Exception as e:
+        return jsonify({'error': f'Error reading crop information: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
