@@ -12,7 +12,7 @@ import Register from "./components/Register";
 import CropPrediction from "./components/CropPrediction";
 import "./App.css";
 
-// Protected Route component
+// Protected Route components
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
