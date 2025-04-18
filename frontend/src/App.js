@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import CropPrediction from "./components/CropPrediction";
+import Home from './components/Home';
 import "./App.css";
 
 // Protected Route components
@@ -35,6 +36,7 @@ function App() {
           <Navigation />
           <main className="main-content">
             <Routes>
+              <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route
@@ -53,7 +55,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/" element={<Navigate to="/login" />} />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
         </div>
