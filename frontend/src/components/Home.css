@@ -24,7 +24,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2e7d32;
+  background-color: #284e2a;
   padding: 1rem 2rem;
   color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -93,4 +93,20 @@ body {
   .home-content p {
     font-size: 1.1rem;
   }
+}
+.nav-button {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  margin-left: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #66bb6a;
+  border-color: #ffffff;
 }

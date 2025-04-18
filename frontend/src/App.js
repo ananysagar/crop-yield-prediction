@@ -10,7 +10,7 @@ import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import CropPrediction from "./components/CropPrediction";
-import Home from './components/Home';
+import Home from "./components/Home";
 import "./App.css";
 
 // Protected Route components
