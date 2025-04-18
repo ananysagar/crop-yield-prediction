@@ -12,6 +12,7 @@ import Register from "./components/Register";
 import CropPrediction from "./components/CropPrediction";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
+import About from "./components/about";
 import "./App.css";
 
 // Protected Route components
@@ -56,6 +57,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="/about" element={<About />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
