@@ -16,7 +16,15 @@ const Navigation = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">Crop Yield Prediction</div>
+      {!user ? (
+        <Link to="/" className="navbar-brand">
+          Crop Yield Prediction
+        </Link>
+      ) : (
+        <Link to="/dashboard" className="navbar-brand">
+          Crop Yield Prediction
+        </Link>
+      )}
       <div className="navbar-links">
         {user ? (
           <>
