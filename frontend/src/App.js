@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import CropPrediction from "./components/CropPrediction";
 import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
 import "./App.css";
 
 // Protected Route components
@@ -51,7 +52,7 @@ function App() {
                 path="/dashboard"
                 element={
                   <ProtectedRoute>
-                    <div>Dashboard</div>
+                    <Dashboard />
                   </ProtectedRoute>
                 }
               />
