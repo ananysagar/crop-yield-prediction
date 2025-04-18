@@ -1,0 +1,77 @@
+.dashboard-container {
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: -70px;
+}
+
+.dashboard-title {
+  font-size: 30px;
+  color: #125342;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.dashboard-card {
+  background: #125342;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 22px;
+  text-align: left;
+  margin-bottom: 25px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.action-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.action-card {
+  background: #fff;
+  flex: 1 1 30%;
+  padding: 25px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  min-width: 240px;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+}
+
+.action-card h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.action-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.action-button {
+  padding: 10px 16px;
+  background-color: #125342;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #0b392d;
+}
