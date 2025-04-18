@@ -10,7 +10,6 @@ body {
   background: linear-gradient(to bottom right, #e8f5e9, #f1f8e9);
   color: #2e7d32;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 /* Navbar styles */
