@@ -24,7 +24,9 @@ function Dashboard() {
           <div className="action-card">
             <h3>Learn More</h3>
             <p>Learn about our platform</p>
-            <button className="action-button">About Us</button>
+            <Link to="/about" className="action-button">
+              About Us
+            </Link>
           </div>
         </div>
       </div>

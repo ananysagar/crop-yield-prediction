@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e6f2ed;
+}
+
+.about-container {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.about-card h1 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #125342;
+}
+
+.about-section {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.about-section h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #125342;
+}
+
+.about-section p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.about-section ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: #444;
+  font-size: 15px;
+}
+
+.features {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.feature-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1 1 300px;
+  box-shadow: 20 12px 28px rgba(5, 18, 15, 0.2);
+  
+  text-align: left;
+  transition: all 0.25s ease-in-out;
+  border: 1px solid #125342;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(18, 83, 66, 0.3);
+}
+
+.feature-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #125342;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #444;
+}
