@@ -40,7 +40,7 @@ const CropPrediction = () => {
             const cropInfo = await fetch(
               `http://localhost:5000/api/crop-info/${cropName.toLowerCase()}`,
               {
-                credentials: 'include'
+                credentials: "include",
               }
             );
             const cropData = await cropInfo.json();
@@ -57,12 +57,14 @@ const CropPrediction = () => {
         // Fetch both crop details
         const fetchBothCrops = async () => {
           const mainCropInfo = await fetchCropInfo(response.prediction);
-          const altCropInfo = response.prediction1 !== "N/A" ? 
-            await fetchCropInfo(response.prediction1) : null;
-          
+          const altCropInfo =
+            response.prediction1 !== "N/A"
+              ? await fetchCropInfo(response.prediction1)
+              : null;
+
           setCropDetails({
             main: mainCropInfo,
-            alternative: altCropInfo
+            alternative: altCropInfo,
           });
         };
 
@@ -134,51 +136,58 @@ const CropPrediction = () => {
         {prediction && (
           <div className="prediction-result">
             <h3>Prediction Results</h3>
-            <div className="result-item">
-              <span className="label">Recommended Crop:</span>
-              <span className="value">{prediction.prediction}</span>
-            </div>
-            {prediction.price && (
-              <div className="result-item">
-                <span className="label">Estimated Price:</span>
-                <span className="value">₹{prediction.price}</span>
+            <div className="result-grid">
+              <div className="result-card">
+                <h4>Primary Crop</h4>
+                <p>
+                  <strong>Crop:</strong> {prediction.prediction}
+                </p>
+                {prediction.price && (
+                  <p>
+                    <strong>Estimated Price:</strong> ₹{prediction.price}
+                  </p>
+                )}
               </div>
-            )}
-            <div className="result-item">
-              <span className="label">Alternative Crop:</span>
-              <span className="value">{prediction.prediction1}</span>
-            </div>
-            {prediction.price1 && prediction.prediction1 !== "N/A" && (
-              <div className="result-item">
-                <span className="label">Alternative Estimated Price:</span>
-                <span className="value">₹{prediction.price1}</span>
+
+              <div className="result-card">
+                <h4>Alternative Crop</h4>
+                <p>
+                  <strong>Crop:</strong> {prediction.prediction1}
+                </p>
+                {prediction.price1 && prediction.prediction1 !== "N/A" && (
+                  <p>
+                    <strong>Estimated Price:</strong> ₹{prediction.price1}
+                  </p>
+                )}
               </div>
-            )}
+            </div>
           </div>
         )}
 
         {cropDetails && (
-          <>
+          <div className="crop-info-section">
             {cropDetails.main && (
-              <div className="crop-details">
-                <h3>Primary Crop Information - {prediction.prediction}</h3>
-                <div 
+              <div className="crop-card">
+                <h3>🌱 Primary Crop Information - {prediction.prediction}</h3>
+                <div
                   className="crop-content"
-                  dangerouslySetInnerHTML={{ __html: cropDetails.main }} 
+                  dangerouslySetInnerHTML={{ __html: cropDetails.main }}
                 />
               </div>
             )}
-            
+
             {cropDetails.alternative && prediction.prediction1 !== "N/A" && (
-              <div className="crop-details">
-                <h3>Alternative Crop Information - {prediction.prediction1}</h3>
-                <div 
+              <div className="crop-card">
+                <h3>
+                  🌿 Alternative Crop Information - {prediction.prediction1}
+                </h3>
+                <div
                   className="crop-content"
-                  dangerouslySetInnerHTML={{ __html: cropDetails.alternative }} 
+                  dangerouslySetInnerHTML={{ __html: cropDetails.alternative }}
                 />
               </div>
             )}
-          </>
+          </div>
         )}
       </div>
     </div>
